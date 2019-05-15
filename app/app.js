@@ -10,7 +10,28 @@
 */
 
 //localStorage interaction function
+//create
+var createItem = function(key, value) {
+  return window.localStorage.setItem(key, value);
+}
 
+//update
+var updateItem = function(key, value) {
+  return window.localStorage.setItem(key, value);
+}
+
+//delete
+var deleteItem = function(key) {
+  return window.localStorage.removeItem(key);
+}
+
+//clear everything
+var clearEverything = function() {
+  return window.localStorage.clear();
+}
+
+
+///////////////////////////////////////////
 //event handlers for the buttons and ... possibly the inputboxes
   //preventdefault on button clicks
 $(document).ready(function() {
