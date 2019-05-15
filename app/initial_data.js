@@ -1,8 +1,9 @@
 const initialData = {
 	books : {
-		'Doom Patrol' : {
+		'doom patrol' : {
 			issues : {
 				19 : {
+					series_title : 'Doom Patrol',
 					writers : ['Grant Morrison'],
 					pencillers : ['Richard Case'],
 					inkers : ['Carlos Garzon'],
@@ -14,6 +15,7 @@ const initialData = {
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/16/11340_20051122042316_large.jpg'
 				},
 				20 : {
+					series_title : 'Doom Patrol',
 					writers : ['Grant Morrison'],
 					pencillers : ['Richard Case'],
 					inkers : ['Scott Hanna'],
@@ -27,9 +29,10 @@ const initialData = {
 			}
 		},
 
-		'Green Lantern' : {
+		'green lantern' : {
 			issues : {
 				1 : {
+					series_title : 'Green Lantern',
 					writers : ['Geoff Johns'],
 					pencillers : ['Carlos Pacheco', 'Ethan Van Sciver'],
 					inkers : ['Jesús Merino', 'Ethan Van Sciver'],
@@ -41,6 +44,7 @@ const initialData = {
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/154/30_20061231074132_large.jpg'
 				},
 				2 : {
+					series_title : 'Green Lantern',
 					writers : ['Geoff Johns'],
 					pencillers : ['Carlos Pacheco'],
 					inkers : ['Jesús Merino'],
