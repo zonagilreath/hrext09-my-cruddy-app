@@ -34,7 +34,11 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 		let titleSearchString = document.querySelector('form').elements['book_title'].value;
 		let basicOrAdvenced = event.target.getAttribute('jsOtherForm');
 		getSearchForm(basicOrAdvenced, titleSearchString);
-	})
+	});
+
+	document.querySelector('#add_new_issue').addEventListener('click', function(){
+		getNewIssueForm();
+	});
 }
 
 function basicSearch(formData){
@@ -92,10 +96,16 @@ function hasArtist(issue, creatorQuery) {
 	return _.some(hits);
 }
 
+function getNewIssueForm(){
+	document.querySelector('#form_container').innerHTML = createBookForm;
 
-// function getFormData(){
-// 	let formData = new FormData(document.querySelector('form'));
-//   let dataObj = {};
-// 	formData.forEach((value, key) => {dataObj[key] = value});
-//   console.log(dataObj);
-// }
+	let form = document.querySelector('form');
+	form.addEventListener('submit', function(event){
+		createNewIssue(event);
+	});
+
+	document.querySelector('#back_to_search').addEventListener('click', function(){
+		getSearchForm('basic');
+	});
+}
+

@@ -4,6 +4,7 @@ const basicSearchForm = `
   <button id="change_form" type="button">Advanced Search</button>
   <button type="submit" name="submit">Search</button>
 </form>
+<button type="button" id="add_new_issue">Add New Issue</button>
 `;
 
 const advancedSearchForm = `
@@ -16,4 +17,23 @@ const advancedSearchForm = `
   <button id="change_form" type="button">Basic Search</button>
   <button type="submit" name="submit">Search</button>
 </form>
+<button type="button" id="add_new_issue">Add New Issue</button>
  `;
+
+const createBookForm = `
+<form id="create_issue">
+  <input type="text" name="book_title" placeholder="Series title">
+  <input type="number" step="1" name="issue_number" placeholder="Issue #">
+  <input type="month" name="cover_date" label="Cover Date" value="1938-06">
+  <input type="text" name="writer" placeholder="Writers (separated by commas)">
+  <input type="text" name="penciller" placeholder="Pencillers (separated by commas)">
+  <input type="text" name="inkers" placeholder="Inkers (separated by commas)">
+  <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
+  <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
+  <input type="text" name="editors" placeholder="Editors (separated by commas)">
+  <input type="text" name="cover_artists" placeholder="Editors (separated by commas)">
+  <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
+  <button type="submit" name="submit">Submit</button>
+</form>
+<button type="button" id="back_to_search">Back to search</button>
+`;
