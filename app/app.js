@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
 function formHandler(event, searchFunction){
 	event.preventDefault();
 	let formData = new FormData(event.target);
-	searchFunction(formData);
+	let resultList = searchFunction(formData);
+	console.log(resultList);
 }
 
 function getSearchForm(basicOrAdvanced, titleSearchString){
-	// console.log('getSearch called with: ', basicOrAdvanced, titleSearchString);
 	let specifics = {
 		basic: [basicSearchForm, basicSearch],
 		advanced: [advancedSearchForm, advancedSearch],
@@ -19,13 +19,13 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 	document.querySelector('#form_container').innerHTML = specifics[basicOrAdvanced][0];
 
 	let form = document.querySelector('form');
-	if (titleSearchString) {
-		form.elements['book_title'].value = titleSearchString;
-	}
-
 	form.addEventListener('submit', function(event){
 		formHandler(event, specifics[basicOrAdvanced][1]);
 	});
+
+	if (titleSearchString) {
+		form.elements['book_title'].value = titleSearchString;
+	}
 
 	let otherForm = (basicOrAdvanced === 'basic')? 'advanced' : 'basic';
 	let changeFormButton = document.querySelector('#change_form');
@@ -37,44 +37,62 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 	})
 }
 
-// function getBasicSearchForm(titleSearchString){
-// 	let formContainer = document.querySelector('.form_container');
-// 	formContainer.innerHTML = basicSearchForm;
-// 	let form = document.querySelector('form');
-// 	if (titleSearchString) {
-// 		form.elements['book_title'].value = titleSearchString;
-// 	}
-// 	form.addEventListener('submit', function(event){
-// 		formHandler(event, basicSearch);
-// 	});
-// }
-
-// function getAdvancedSearchForm(titleSearchString){
-// 	let formContainer = document.querySelector('.form_container');
-// 	formContainer.innerHTML = advancedSearchForm;
-// 	let form = document.querySelector('form');
-// 	if (titleSearchString) {
-// 		form.elements['book_title'].value = titleSearchString;
-// 	}
-// 	form.addEventListener('submit', function(event){
-// 		formHandler(event, advancedSearch);
-// 	});
-// }
-
 function basicSearch(formData){
-	let titleSearch = formData.get('book_title');
   let books = JSON.parse(window.localStorage.getItem('books'));
-  for (let key in books) {
-  	if (key.includes(titleSearch.toLowerCase())){
-  		console.log(key);
-  		console.log(books[key]);
-  	}
-  }
+  let searchResults = [];
+	for (let title in books){
+		if (title.includes(formData.get('book_title').toLowerCase())){
+			searchResults = searchResults.concat(books[title].issues)
+		}
+	}
+	return searchResults;
 }
 
 function advancedSearch(formData){
-
+	let searchResults = [];
+	let books = JSON.parse(window.localStorage.getItem('books'));
+	if (formData.get('book_title')){
+		for (let title in books){
+			if (title.includes(formData.get('book_title').toLowerCase())){
+				searchResults = searchResults.concat(books[title].issues)
+			}
+		}
+	}else {
+		searchResults = _.flatten(_.pluck(books, 'issues'), true);
+	}
+	if (formData.get('issue_number')){
+		searchResults = _.where(searchResults, {issue: parseInt(formData.get('issue_number'))});
+	}
+	if (formData.get('year')){
+		searchResults = _.where(searchResults, {year: parseInt(formData.get('year'))});
+	}
+	if (formData.get('artist')){
+		searchResults = _.filter(searchResults, function(issue){
+			return hasArtist(issue, formData.get('artist'));
+		});
+	}
+	if (formData.get('writer')){
+		searchResults = _.filter(searchResults, function(issue){
+			return  _.some(issue.writers, function(writer){
+				return writer.toLowerCase().includes(formData.get('writer'));
+			});
+		});
+	}
+	return searchResults;
 }
+
+function hasArtist(issue, creatorQuery) {
+	let artistTypes = ['pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists'];
+	let hits = [];
+	artistTypes.forEach(function(type){
+		hits.push(_.some(issue[type], function(artist){
+			return artist.toLowerCase().includes(creatorQuery.toLowerCase());
+		}));
+	});
+	return _.some(hits);
+}
+
+
 // function getFormData(){
 // 	let formData = new FormData(document.querySelector('form'));
 //   let dataObj = {};

@@ -1,8 +1,9 @@
 const initialData = {
 	books : {
 		'doom patrol' : {
-			issues : {
-				19 : {
+			issues : [
+				{
+					issue: 19,
 					series_title : 'Doom Patrol',
 					writers : ['Grant Morrison'],
 					pencillers : ['Richard Case'],
@@ -12,9 +13,11 @@ const initialData = {
 					editors : ['Robert Greenberger'],
 					cover_artists : ['Richard Case', 'Carlos Garzon'],
 					cover_date : ['February 1989'],
+					year: 1989,
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/16/11340_20051122042316_large.jpg'
 				},
-				20 : {
+				{
+					issue: 20,
 					series_title : 'Doom Patrol',
 					writers : ['Grant Morrison'],
 					pencillers : ['Richard Case'],
@@ -24,14 +27,16 @@ const initialData = {
 					editors : ['Robert Greenberger'],
 					cover_artists : ['Richard Case', 'Carlos Garzon'],
 					cover_date : ['March 1989'],
+					year: 1989,
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/35/21601_20051229114528_large.jpg'
 				},
-			}
+			]
 		},
 
 		'green lantern' : {
-			issues : {
-				1 : {
+			issues : [
+				{
+					issue: 1,
 					series_title : 'Green Lantern',
 					writers : ['Geoff Johns'],
 					pencillers : ['Carlos Pacheco', 'Ethan Van Sciver'],
@@ -41,9 +46,11 @@ const initialData = {
 					editors : ['Dan DiDio', 'Harvey Richards', 'Peter J. Tomasi'],
 					cover_artists : ['Jesús Merino', 'Carlos Pacheco', 'Peter Steigerwald'],
 					cover_date : ['July 2005'],
+					year: 2005,
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/154/30_20061231074132_large.jpg'
 				},
-				2 : {
+				{
+					issue: 2,
 					series_title : 'Green Lantern',
 					writers : ['Geoff Johns'],
 					pencillers : ['Carlos Pacheco'],
@@ -53,10 +60,11 @@ const initialData = {
 					editors : ['Dan DiDio', 'Harvey Richards', 'Peter J. Tomasi'],
 					cover_artists : ['Jesús Merino', 'Carlos Pacheco', 'Peter Steigerwald'],
 					cover_date : ['July 2005'],
+					year: 2005,
 					cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/240/31_20080215115131_large.jpg'
 				},
-			}
-		},
+			]
+		}
 	}
 }
 
