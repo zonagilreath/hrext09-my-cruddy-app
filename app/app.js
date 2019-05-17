@@ -112,9 +112,10 @@ function getNewIssueForm(){
 function newIssueFormHandler(event){
 	event.preventDefault();
 	let formData = {};
-	formData = createIssueObject(event);
-	cleanCreatorLists(formData);
-	console.log(formData);
+	issue = createIssueObject(event);
+	cleanCreatorLists(issue);
+	console.log(issue);
+	addIssueToDB(issue);
 }
 
 function createIssueObject(event){
@@ -139,5 +140,14 @@ function cleanCreatorLists(formData){
 }
 
 function addIssueToDB(issue){
-
+	let title = issue['series_title'];
+	let books = JSON.parse(window.localStorage.getItem('books'));
+	if (books[title.toLowerCase()]){
+		books[title.toLowerCase()].issues.push(issue);
+	}else {
+		books[title.toLowerCase()] = {
+			issues : [issue],
+		}
+	}
+	window.localStorage.setItem('books', JSON.stringify(books));
 }
