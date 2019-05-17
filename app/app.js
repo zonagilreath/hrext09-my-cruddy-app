@@ -3,11 +3,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function formHandler(event, searchFunction){
+function searchFormHandler(event, searchFunction){
 	event.preventDefault();
 	let formData = new FormData(event.target);
 	let resultList = searchFunction(formData);
-	console.log(resultList);
+	resultList.forEach(function(issue){
+		console.log(issue);
+		let issueCardDiv = document.createElement("div");
+		issueCardDiv.classList.add("issue_card");
+		issueCardDiv.innerHTML = createIssueCard(issue);
+		document.querySelector('#issues_container').appendChild(issueCardDiv);
+	});
 }
 
 function getSearchForm(basicOrAdvanced, titleSearchString){
@@ -20,7 +26,7 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 
 	let form = document.querySelector('form');
 	form.addEventListener('submit', function(event){
-		formHandler(event, specifics[basicOrAdvanced][1]);
+		searchFormHandler(event, specifics[basicOrAdvanced][1]);
 	});
 
 	if (titleSearchString) {
