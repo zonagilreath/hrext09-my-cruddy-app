@@ -101,7 +101,7 @@ function getNewIssueForm(){
 
 	let form = document.querySelector('form');
 	form.addEventListener('submit', function(event){
-		createNewIssue(event);
+		newIssueFormHandler(event);
 	});
 
 	document.querySelector('#back_to_search').addEventListener('click', function(){
@@ -109,3 +109,35 @@ function getNewIssueForm(){
 	});
 }
 
+function newIssueFormHandler(event){
+	event.preventDefault();
+	let formData = {};
+	formData = createIssueObject(event);
+	cleanCreatorLists(formData);
+	console.log(formData);
+}
+
+function createIssueObject(event){
+	let formData = {};
+	(new FormData(event.target)).forEach(function(value, key){
+		formData[key] = value;
+	})
+	formData['issue'] = parseInt(formData['issue']);
+	formData['year'] = parseInt(formData['cover_date'].split('-')[0]);
+	return formData;
+}
+
+function cleanCreatorLists(formData){
+	let creators = ['pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists', 'writers', 'editors'];
+	creators.forEach(function(creator){
+		let creatorList = formData[creator].split(',');
+		creatorList = creatorList.map(function(creatorString){
+			return creatorString.trim();
+		});
+		formData[creator] = creatorList;
+	});
+}
+
+function addIssueToDB(issue){
+
+}

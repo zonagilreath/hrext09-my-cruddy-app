@@ -23,10 +23,10 @@ const advancedSearchForm = `
 const createBookForm = `
 <form id="create_issue">
   <input type="text" name="book_title" placeholder="Series title">
-  <input type="number" step="1" name="issue_number" placeholder="Issue #">
+  <input type="number" step="1" name="issue" placeholder="Issue #">
   <input type="month" name="cover_date" label="Cover Date" value="1938-06">
-  <input type="text" name="writer" placeholder="Writers (separated by commas)">
-  <input type="text" name="penciller" placeholder="Pencillers (separated by commas)">
+  <input type="text" name="writers" placeholder="Writers (separated by commas)">
+  <input type="text" name="pencillers" placeholder="Pencillers (separated by commas)">
   <input type="text" name="inkers" placeholder="Inkers (separated by commas)">
   <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
   <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
