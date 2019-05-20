@@ -9,7 +9,7 @@ function searchFormHandler(event, searchFunction){
 	let resultList = searchFunction(formData);
 	resultList.forEach(function(issue){
 		console.log(issue);
-		let issueCardDiv = document.createElement("div");
+		let issueCardDiv = document.createElement("article");
 		issueCardDiv.classList.add("issue_card");
 		issueCardDiv.innerHTML = createIssueCard(issue);
 		document.querySelector('#issues_container').appendChild(issueCardDiv);
