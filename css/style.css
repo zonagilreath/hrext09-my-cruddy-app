@@ -55,9 +55,16 @@ input{
 	box-sizing:border-box
 } 
 
-/*nav img {
+#issues_container {
+	width: 80%;
 }
 
-nav button {
+.issue_card {
 	width: 100%;
-}*/
+}
+
+.issue_card img {
+	width: 10vw;
+	float: left;
+	margin-right: 10px;
+}

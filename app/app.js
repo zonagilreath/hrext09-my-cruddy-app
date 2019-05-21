@@ -2,18 +2,22 @@ document.addEventListener("DOMContentLoaded", function() {
 	getSearchForm('basic');
 });
 
+function getRecentIssues(){
+	
+}
 
 function searchFormHandler(event, searchFunction){
 	event.preventDefault();
 	let formData = new FormData(event.target);
 	let resultList = searchFunction(formData);
-	resultList.forEach(function(issue){
-		console.log(issue);
-		let issueCardDiv = document.createElement("article");
+	resultList.forEach(addIssueToPage);
+}
+
+function addIssueToPage(issue){
+	let issueCardDiv = document.createElement("article");
 		issueCardDiv.classList.add("issue_card");
 		issueCardDiv.innerHTML = createIssueCard(issue);
 		document.querySelector('#issues_container').appendChild(issueCardDiv);
-	});
 }
 
 function getSearchForm(basicOrAdvanced, titleSearchString){
