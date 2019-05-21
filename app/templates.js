@@ -44,25 +44,25 @@ function createIssueCard(issue){
       <img src="${issue.cover_url}">
       <div class="issue_data">
         <p class="data_label"><strong>Writer(s):</strong>
-          <span class="creator_names">${issue.writers.join(', ')}</span>
+          ${wrapCreatorStrings(issue.writers).join(', ')}
         </p>
         <p class="data_label"><strong>Penciller(s):</strong>
-          <span class="creator_names">${issue.pencillers.join(', ')}</span>
+          ${wrapCreatorStrings(issue.pencillers).join(', ')}
         </p>
         <p class="data_label"><strong>Inker(s):</strong>
-          <span class="creator_names">${issue.inkers.join(', ')}</span>
+          ${wrapCreatorStrings(issue.inkers).join(', ')}
         </p>
         <p class="data_label"><strong>Colorist(s):</strong>
-          <span class="creator_names">${issue.colorists.join(', ')}</span>
+          ${wrapCreatorStrings(issue.colorists).join(', ')}
         </p>
         <p class="data_label"><strong>Letterer(s):</strong>
-          <span class="creator_names">${issue.letterers.join(', ')}</span>
+          ${wrapCreatorStrings(issue.letterers).join(', ')}
         </p>
         <p class="data_label"><strong>Cover Artist(s):</strong>
-          <span class="creator_names">${issue.cover_artists.join(', ')}</span>
+          ${wrapCreatorStrings(issue.cover_artists).join(', ')}
         </p>
         <p class="data_label"><strong>Editor(s):</strong>
-          <span class="creator_names">${issue.editors.join(', ')}</span>
+          ${wrapCreatorStrings(issue.editors).join(', ')}
         </p>
         <p class="data_label"><strong>Cover date:</strong>
           <span class="cover_date">${cover_date}</span>
@@ -72,3 +72,12 @@ function createIssueCard(issue){
   `;
   return htmlTemplate;
 } 
+
+function wrapCreatorStrings(creatorList){
+  let wrappedCreators = [];
+  creatorList.forEach(function(creator){
+    let creatorSpan = `<span class="creator_name">${creator}</span>`;
+    wrappedCreators.push(creatorSpan);
+  });
+  return wrappedCreators;
+}
