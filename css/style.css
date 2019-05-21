@@ -6,6 +6,7 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
+	background-color: #F2F6F2;
 	/*background-color: #A8DEF6;*/
 }
 
@@ -32,7 +33,8 @@ header h1 {
 	font-size: 10vh;
 	text-transform: uppercase;
 	line-height: 0.8;
-	color: #E1ECE1;
+	/*color: #E1ECE1;*/
+	color: #F2F6F2;
 }
 
 main {
@@ -51,20 +53,66 @@ nav img, nav button, nav input {
 	width: 100%;
 }
 
+nav img {
+	opacity: 0.5;
+}
+
 input{
 	box-sizing:border-box
 } 
+
+button {
+	background-color: #899E89;
+	color: #F2F6F2;
+	border: 0;
+	text-transform: uppercase;
+	font-size: 1.3;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 2px;
+	font-weight: bold;
+}
 
 #issues_container {
 	width: 80%;
 }
 
 .issue_card {
-	width: 100%;
+	display:block;
+	padding: 15px;
+	margin: 0 0 5px 5px;
+	/*background-color: #E1ECE1;*/
+	/*color: #638263;*/
+	color: #1F331f;
+
+}
+
+.issue_card_body {
+	display: flex;
+	align-items: flex-start;
+}
+
+.issue_card h3 {
+	margin-top: 0;
 }
 
 .issue_card img {
-	width: 10vw;
-	float: left;
+	/*width: 10vw;*/
+	width: 145px;
+	/*min-height: 215px;*/
+	/*height: auto;*/
+	/*display: inline-block;*/
 	margin-right: 10px;
+	background-color: #F2F6F2;
+}
+
+.issue_data {
+	height: 230px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.data_label {
+	margin: 4px;
 }

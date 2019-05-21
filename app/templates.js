@@ -4,7 +4,6 @@ const basicSearchForm = `
   <button type="submit" name="submit">Search</button>
   <button id="change_form" type="button">Advanced Search</button>
 </form>
-<button type="button" id="add_new_issue">Add New Issue</button>
 `;
 
 const advancedSearchForm = `
@@ -17,7 +16,6 @@ const advancedSearchForm = `
   <button type="submit" name="submit">Search</button>
   <button id="change_form" type="button">Basic Search</button>
 </form>
-<button type="button" id="add_new_issue">Add New Issue</button>
  `;
 
 const createBookForm = `
@@ -35,31 +33,42 @@ const createBookForm = `
   <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
   <button type="submit" name="submit">Submit</button>
 </form>
-<button type="button" id="back_to_search">Back to search</button>
+<button type="button" id="cancel_add">Cancel</button>
 `;
 
 function createIssueCard(issue){
   let cover_date = moment(issue.cover_date, 'YYYY-MM').format('MMMM, YYYY');
   let htmlTemplate = `
     <h3>${issue.series_title} #${issue.issue} (${issue.year})</h3>
-    <img src="${issue.cover_url}">
-    <p class="creator_label">Writer(s):</p>
-    <p class="creator_names">${issue.writers.join(', ')}</p>
-    <p class="creator_label">Penciller(s):</p>
-    <p class="creator_names">${issue.pencillers.join(', ')}</p>
-    <p class="creator_label">Inker(s):</p>
-    <p class="creator_names">${issue.inkers.join(', ')}</p>
-    <p class="creator_label">Colorist(s):</p>
-    <p class="creator_names">${issue.colorists.join(', ')}</p>
-    <p class="creator_label">Letterer(s):</p>
-    <p class="creator_names">${issue.letterers.join(', ')}</p>
-    <p class="creator_label">Cover Artist(s):</p>
-    <p class="creator_names">${issue.cover_artists.join(', ')}</p>
-    <p class="creator_label">Editor(s):</p>
-    <p class="creator_names">${issue.editors.join(', ')}</p>
-    <p class="cover_date_label">Cover date:
-      <span class="cover_date">${cover_date}</span>
-    </p>
+    <div class="issue_card_body">
+      <img src="${issue.cover_url}">
+      <div class="issue_data">
+        <p class="data_label"><strong>Writer(s):</strong>
+          <span class="creator_names">${issue.writers.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Penciller(s):</strong>
+          <span class="creator_names">${issue.pencillers.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Inker(s):</strong>
+          <span class="creator_names">${issue.inkers.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Colorist(s):</strong>
+          <span class="creator_names">${issue.colorists.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Letterer(s):</strong>
+          <span class="creator_names">${issue.letterers.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Cover Artist(s):</strong>
+          <span class="creator_names">${issue.cover_artists.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Editor(s):</strong>
+          <span class="creator_names">${issue.editors.join(', ')}</span>
+        </p>
+        <p class="data_label"><strong>Cover date:</strong>
+          <span class="cover_date">${cover_date}</span>
+        </p>
+      </div>
+    </div>
   `;
   return htmlTemplate;
 } 

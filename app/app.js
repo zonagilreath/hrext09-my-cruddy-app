@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
 	getSearchForm('basic');
+	document.querySelector('#add_new_issue').addEventListener('click', getNewIssueForm);
 	getRecentIssues();
 });
 
 function getRecentIssues(){
+	document.getElementById('issues_container').innerHTML = '';
 	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
 	books.forEach(addIssueToPage);
 }
@@ -32,10 +34,6 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 		let titleSearchString = document.querySelector('form').elements['book_title'].value;
 		let basicOrAdvenced = event.target.getAttribute('jsOtherForm');
 		getSearchForm(basicOrAdvenced, titleSearchString);
-	});
-
-	document.querySelector('#add_new_issue').addEventListener('click', function(){
-		getNewIssueForm();
 	});
 }
 
@@ -110,21 +108,24 @@ function hasArtist(issue, creatorQuery) {
 }
 
 function getNewIssueForm(){
-	document.querySelector('#form_container').innerHTML = createBookForm;
+	document.querySelector('#issues_container').innerHTML = createBookForm;
 
 	let form = document.querySelector('form');
 	form.addEventListener('submit', function(event){
 		newIssueFormHandler(event);
 	});
 
-	document.querySelector('#back_to_search').addEventListener('click', function(){
+	document.querySelector('#cancel_add').addEventListener('click', function(){
 		getSearchForm('basic');
+		document.querySelector('#add_new_issue').addEventListener('click', getNewIssueForm);
+		getRecentIssues();
 	});
+	
+	document.querySelector('#add_new_issue').removeEventListener('click', getNewIssueForm);
 }
 
 function newIssueFormHandler(event){
 	event.preventDefault();
-	document.getElementById('issues_container').innerHTML = '';
 	let formData = {};
 	issue = createIssueObject(event);
 	cleanCreatorLists(issue);
