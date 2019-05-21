@@ -29,25 +29,34 @@ function advancedSearch(formData){
 	}
 	if (formData.get('artist')){
 		searchResults = _.filter(searchResults, function(issue){
-			return hasArtist(issue, formData.get('artist'));
+			return hasCreator(issue, formData.get('artist'), 'artist');
 		});
 	}
 	if (formData.get('writer')){
 		searchResults = _.filter(searchResults, function(issue){
-			return  _.some(issue.writers, function(writer){
-				return writer.toLowerCase().includes(formData.get('writer'));
-			});
+			return hasCreator(issue, formData.get('writer'), 'author');
 		});
 	}
 	return searchResults;
 }
 
-function hasArtist(issue, creatorQuery) {
-	let artistTypes = ['pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists'];
+function genericQueryByCreator(creator){
+	let issues = _.flatten(_.pluck(JSON.parse(window.localStorage.getItem('books')), 'issues'), true);
+	return _.filter(issues, function(issue){
+		return hasCreator(issue, creator, 'all');
+	});
+}
+
+function hasCreator(issue, creatorQuery, creatorCategory){
+	const creatorTypes = {
+		author: ['writers', 'editors'],
+		artist: ['pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists'],
+		all: ['writers', 'editors', 'pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists']
+	}
 	let hits = [];
-	artistTypes.forEach(function(type){
-		hits.push(_.some(issue[type], function(artist){
-			return artist.toLowerCase().includes(creatorQuery.toLowerCase());
+	creatorTypes[creatorCategory].forEach(function(type){
+		hits.push(_.some(issue[type], function(creator){
+			return creator.toLowerCase().includes(creatorQuery.toLowerCase());
 		}));
 	});
 	return _.some(hits);
