@@ -1,23 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
 	getSearchForm('basic');
+	getRecentIssues();
 });
 
 function getRecentIssues(){
-	
-}
-
-function searchFormHandler(event, searchFunction){
-	event.preventDefault();
-	let formData = new FormData(event.target);
-	let resultList = searchFunction(formData);
-	resultList.forEach(addIssueToPage);
-}
-
-function addIssueToPage(issue){
-	let issueCardDiv = document.createElement("article");
-		issueCardDiv.classList.add("issue_card");
-		issueCardDiv.innerHTML = createIssueCard(issue);
-		document.querySelector('#issues_container').appendChild(issueCardDiv);
+	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
+	books.forEach(addIssueToPage);
 }
 
 function getSearchForm(basicOrAdvanced, titleSearchString){
@@ -49,6 +37,21 @@ function getSearchForm(basicOrAdvanced, titleSearchString){
 	document.querySelector('#add_new_issue').addEventListener('click', function(){
 		getNewIssueForm();
 	});
+}
+
+function searchFormHandler(event, searchFunction){
+	event.preventDefault();
+	document.getElementById('issues_container').innerHTML = '';
+	let formData = new FormData(event.target);
+	let resultList = searchFunction(formData);
+	resultList.forEach(addIssueToPage);
+}
+
+function addIssueToPage(issue){
+	let issueCardDiv = document.createElement("article");
+		issueCardDiv.classList.add("issue_card");
+		issueCardDiv.innerHTML = createIssueCard(issue);
+		document.querySelector('#issues_container').appendChild(issueCardDiv);
 }
 
 function basicSearch(formData){
@@ -121,11 +124,14 @@ function getNewIssueForm(){
 
 function newIssueFormHandler(event){
 	event.preventDefault();
+	document.getElementById('issues_container').innerHTML = '';
 	let formData = {};
 	issue = createIssueObject(event);
 	cleanCreatorLists(issue);
-	console.log(issue);
 	addIssueToDB(issue);
+	updateRecentList(issue);
+	getSearchForm('basic');
+	getRecentIssues();
 }
 
 function createIssueObject(event){
@@ -160,4 +166,14 @@ function addIssueToDB(issue){
 		}
 	}
 	window.localStorage.setItem('books', JSON.stringify(books));
+}
+
+function updateRecentList(issue){
+	let recentIssues = JSON.parse(window.localStorage.getItem('recent_additions'));
+	if (recentIssues.length >= 5){
+		recentIssues = [issue, ...recentIssues.slice(0, 4)];
+	}else {
+		recentIssues.unshift(issue);
+	}
+	window.localStorage.setItem('recent_additions', JSON.stringify(recentIssues));
 }

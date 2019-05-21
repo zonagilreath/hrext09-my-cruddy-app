@@ -68,20 +68,6 @@ const initialData = {
 	},
 	recents : [
 		{
-			issue: 19,
-			series_title : 'Doom Patrol',
-			writers : ['Grant Morrison'],
-			pencillers : ['Richard Case'],
-			inkers : ['Carlos Garzon'],
-			colorists : ['Michele Wolfman'],
-			letterers : ['John E Workman Jr'],
-			editors : ['Robert Greenberger'],
-			cover_artists : ['Richard Case', 'Carlos Garzon'],
-			cover_date : '1989-02',
-			year: 1989,
-			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/16/11340_20051122042316_large.jpg'
-		},
-		{
 			issue: 20,
 			series_title : 'Doom Patrol',
 			writers : ['Grant Morrison'],
@@ -96,20 +82,6 @@ const initialData = {
 			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/35/21601_20051229114528_large.jpg'
 		},
 		{
-			issue: 1,
-			series_title : 'Green Lantern',
-			writers : ['Geoff Johns'],
-			pencillers : ['Carlos Pacheco', 'Ethan Van Sciver'],
-			inkers : ['Jesus Merino', 'Ethan Van Sciver'],
-			colorists : ['W Moose Baumann'],
-			letterers : ['Rob Leigh'],
-			editors : ['Dan DiDio', 'Harvey Richards', 'Peter J Tomasi'],
-			cover_artists : ['Jesus Merino', 'Carlos Pacheco', 'Peter Steigerwald'],
-			cover_date : '2005-07',
-			year: 2005,
-			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/154/30_20061231074132_large.jpg'
-		},
-		{
 			issue: 2,
 			series_title : 'Green Lantern',
 			writers : ['Geoff Johns'],
@@ -122,6 +94,34 @@ const initialData = {
 			cover_date : '2005-08',
 			year: 2005,
 			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/240/31_20080215115131_large.jpg'
+		},
+		{
+			issue: 19,
+			series_title : 'Doom Patrol',
+			writers : ['Grant Morrison'],
+			pencillers : ['Richard Case'],
+			inkers : ['Carlos Garzon'],
+			colorists : ['Michele Wolfman'],
+			letterers : ['John E Workman Jr'],
+			editors : ['Robert Greenberger'],
+			cover_artists : ['Richard Case', 'Carlos Garzon'],
+			cover_date : '1989-02',
+			year: 1989,
+			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/16/11340_20051122042316_large.jpg'
+		},
+		{
+			issue: 1,
+			series_title : 'Green Lantern',
+			writers : ['Geoff Johns'],
+			pencillers : ['Carlos Pacheco', 'Ethan Van Sciver'],
+			inkers : ['Jesus Merino', 'Ethan Van Sciver'],
+			colorists : ['W Moose Baumann'],
+			letterers : ['Rob Leigh'],
+			editors : ['Dan DiDio', 'Harvey Richards', 'Peter J Tomasi'],
+			cover_artists : ['Jesus Merino', 'Carlos Pacheco', 'Peter Steigerwald'],
+			cover_date : '2005-07',
+			year: 2005,
+			cover_url : 'http://comicbookdb.com/graphics/comic_graphics/1/154/30_20061231074132_large.jpg'
 		},
 	]
 }
