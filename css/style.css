@@ -116,3 +116,8 @@ button {
 .data_label {
 	margin: 4px;
 }
+
+.creator_name {
+	text-decoration: underline;
+	cursor: pointer;
+}
