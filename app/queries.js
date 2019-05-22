@@ -1,8 +1,8 @@
-function getRecentIssues(){
-	document.getElementById('issues_container').innerHTML = '';
-	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
-	books.forEach(addIssueToPage);
-}
+// function getRecentIssues(){
+// 	document.getElementById('issues_container').innerHTML = '';
+// 	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
+// 	books.forEach(addIssueToPage);
+// }
 
 function basicSearch(formData){
   let books = JSON.parse(window.localStorage.getItem('books'));
@@ -68,25 +68,25 @@ function hasCreator(issue, creatorQuery, creatorCategory){
 	return _.some(hits);
 }
 
-function addIssueToDB(issue){
-	let title = issue['series_title'];
-	let books = JSON.parse(window.localStorage.getItem('books'));
-	if (books[title.toLowerCase()]){
-		books[title.toLowerCase()].issues.push(issue);
-	}else {
-		books[title.toLowerCase()] = {
-			issues : [issue],
-		}
-	}
-	window.localStorage.setItem('books', JSON.stringify(books));
-}
+// function addIssueToDB(issue){
+// 	let title = issue['series_title'];
+// 	let books = JSON.parse(window.localStorage.getItem('books'));
+// 	if (books[title.toLowerCase()]){
+// 		books[title.toLowerCase()].issues.push(issue);
+// 	}else {
+// 		books[title.toLowerCase()] = {
+// 			issues : [issue],
+// 		}
+// 	}
+// 	window.localStorage.setItem('books', JSON.stringify(books));
+// }
 
-function updateRecentList(issue){
-	let recentIssues = JSON.parse(window.localStorage.getItem('recent_additions'));
-	if (recentIssues.length >= 5){
-		recentIssues = [issue, ...recentIssues.slice(0, 4)];
-	}else {
-		recentIssues.unshift(issue);
-	}
-	window.localStorage.setItem('recent_additions', JSON.stringify(recentIssues));
-}
+// function updateRecentList(issue){
+// 	let recentIssues = JSON.parse(window.localStorage.getItem('recent_additions'));
+// 	if (recentIssues.length >= 5){
+// 		recentIssues = [issue, ...recentIssues.slice(0, 4)];
+// 	}else {
+// 		recentIssues.unshift(issue);
+// 	}
+// 	window.localStorage.setItem('recent_additions', JSON.stringify(recentIssues));
+// }

@@ -21,7 +21,7 @@ const advancedSearchForm = `
 const createBookForm = `
 <form id="create_issue">
   <input type="text" name="series_title" placeholder="Series title">
-  <input type="number" step="1" name="issue" placeholder="Issue #">
+  <input type="number" step="1" name="number" placeholder="Issue #">
   <input type="month" name="cover_date" label="Cover Date" value="1938-06">
   <input type="text" name="writers" placeholder="Writers (separated by commas)">
   <input type="text" name="pencillers" placeholder="Pencillers (separated by commas)">
@@ -29,7 +29,7 @@ const createBookForm = `
   <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
   <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
   <input type="text" name="editors" placeholder="Editors (separated by commas)">
-  <input type="text" name="cover_artists" placeholder="Editors (separated by commas)">
+  <input type="text" name="cover_artists" placeholder="Cover Artists (separated by commas)">
   <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
   <button type="submit" name="submit">Submit</button>
 </form>
@@ -37,9 +37,11 @@ const createBookForm = `
 `;
 
 function createIssueCard(issue){
-  let cover_date = moment(issue.cover_date, 'YYYY-MM').format('MMMM, YYYY');
+  // let coverDateMoment = moment(issue.cover_date, 'YYYY-MM');
+  let coverDateMoment = moment(issue.cover_date.toDate(), 'YYYY-MM');
+  let coverDate = coverDateMoment.format('MMMM, YYYY');
   let htmlTemplate = `
-    <h3>${issue.series_title} #${issue.issue} (${issue.year})</h3>
+    <h3>${issue.series_title} #${issue.number} (${coverDateMoment.year()})</h3>
     <div class="issue_card_body">
       <img src="${issue.cover_url}">
       <div class="issue_data">
@@ -65,7 +67,7 @@ function createIssueCard(issue){
           ${wrapCreatorStrings(issue.editors).join(', ')}
         </p>
         <p class="data_label"><strong>Cover date:</strong>
-          <span class="cover_date">${cover_date}</span>
+          <span class="cover_date">${coverDate}</span>
         </p>
       </div>
     </div>

@@ -9,6 +9,38 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const fbase_time = firebase.firestore.Timestamp;
+const issuesColl = db.collection('issues');
 
+function getRecentIssues(){
+	document.getElementById('issues_container').innerHTML = '';
+	issuesColl.get().then((snap)=>{
+		snap.forEach((doc)=>{
+			addIssueToPage(doc.data());
+		});
+	});
+}
 
-// const issuesCollection
+function createIssueObject(event){
+	let issueData = {};
+	(new FormData(event.target)).forEach(function(value, key){
+		issueData[key] = value;
+	})
+	issueData['number'] = parseInt(issueData['number']);
+	issueData['cover_date'] = fbase_time.fromDate(new Date(issueData['cover_date']));
+	issueData['added'] = fbase_time.now();
+	console.log(issueData);
+	return issueData;
+}
+
+function addIssueToDB(issue){
+	console.log(issue);
+	issuesColl.add(issue)
+	.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+	})
+	.catch(function(error) {
+	    console.error("Error adding document: ", error);
+	});
+}

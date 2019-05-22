@@ -64,10 +64,9 @@ function makeCreatorsTravsersable(issueElement){
 function getNewIssueForm(){
 	document.querySelector('#issues_container').innerHTML = createBookForm;
 
-	let form = document.querySelector('form');
-	form.addEventListener('submit', function(event){
-		newIssueFormHandler(event);
-	});
+	let form = document.querySelector('#create_issue');
+	console.log('form added!');
+	form.addEventListener('submit', newIssueFormHandler);
 
 	document.querySelector('#cancel_add').addEventListener('click', function(){
 		getSearchForm('basic');
@@ -81,23 +80,25 @@ function getNewIssueForm(){
 function newIssueFormHandler(event){
 	event.preventDefault();
 	let formData = {};
+	console.log('about to call create issue object');
 	issue = createIssueObject(event);
 	cleanCreatorLists(issue);
+	console.log('about to call add to db');
 	addIssueToDB(issue);
-	updateRecentList(issue);
+	// updateRecentList(issue);
 	getSearchForm('basic');
 	getRecentIssues();
 }
 
-function createIssueObject(event){
-	let issueData = {};
-	(new FormData(event.target)).forEach(function(value, key){
-		issueData[key] = value;
-	})
-	issueData['issue'] = parseInt(issueData['issue']);
-	issueData['year'] = parseInt(issueData['cover_date'].split('-')[0]);
-	return issueData;
-}
+// function createIssueObject(event){
+// 	let issueData = {};
+// 	(new FormData(event.target)).forEach(function(value, key){
+// 		issueData[key] = value;
+// 	})
+// 	issueData['issue'] = parseInt(issueData['issue']);
+// 	issueData['year'] = parseInt(issueData['cover_date'].split('-')[0]);
+// 	return issueData;
+// }
 
 function cleanCreatorLists(formData){
 	let creators = ['pencillers', 'inkers', 'colorists', 'letterers', 'cover_artists', 'writers', 'editors'];
