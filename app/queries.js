@@ -1,3 +1,9 @@
+function getRecentIssues(){
+	document.getElementById('issues_container').innerHTML = '';
+	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
+	books.forEach(addIssueToPage);
+}
+
 function basicSearch(formData){
   let books = JSON.parse(window.localStorage.getItem('books'));
   let searchResults = [];

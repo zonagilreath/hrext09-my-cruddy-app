@@ -4,12 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	getRecentIssues();
 });
 
-function getRecentIssues(){
-	document.getElementById('issues_container').innerHTML = '';
-	let books = JSON.parse(window.localStorage.getItem('recent_additions'));
-	books.forEach(addIssueToPage);
-}
-
 function getSearchForm(basicOrAdvanced, titleSearchString){
 	let specifics = {
 		basic: [basicSearchForm, basicSearch],
