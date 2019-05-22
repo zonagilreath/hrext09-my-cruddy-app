@@ -42,7 +42,6 @@ function searchFormHandler(event, searchFunction){
 function creatorClickHandler(event){
 	event.preventDefault();
 	document.getElementById('issues_container').innerHTML = '';
-	console.log(event.target.textContent);
 	resultList = genericQueryByCreator(event.target.textContent);
 	resultList.forEach(addIssueToPage);
 }
@@ -58,7 +57,6 @@ function addIssueToPage(issue){
 function makeCreatorsTravsersable(issueElement){
 	let creatorSpans = issueElement.getElementsByClassName('creator_name');
 	for (let i = 0; i < creatorSpans.length; i++){
-		console.log(creatorSpans.item(i));
 		creatorSpans.item(i).addEventListener('click', creatorClickHandler);
 	}
 }
