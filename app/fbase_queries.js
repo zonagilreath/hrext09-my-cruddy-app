@@ -13,15 +13,6 @@ const db = firebase.firestore();
 const fbase_time = firebase.firestore.Timestamp;
 const issuesColl = db.collection('issues');
 
-function getRecentIssues(){
-	document.getElementById('issues_container').innerHTML = '';
-	issuesColl.get().then((snap)=>{
-		snap.forEach((doc)=>{
-			addIssueToPage(doc.data());
-		});
-	});
-}
-
 function createIssueObject(event){
 	let issueData = {};
 	(new FormData(event.target)).forEach(function(value, key){
@@ -42,5 +33,14 @@ function addIssueToDB(issue){
 	})
 	.catch(function(error) {
 	    console.error("Error adding document: ", error);
+	});
+}
+
+function getRecentIssues(){
+	document.getElementById('issues_container').innerHTML = '';
+	issuesColl.get().then((snap)=>{
+		snap.forEach((doc)=>{
+			addIssueToPage(doc.data());
+		});
 	});
 }

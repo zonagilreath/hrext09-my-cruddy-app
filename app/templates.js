@@ -37,8 +37,8 @@ const createBookForm = `
 `;
 
 function createIssueCard(issue){
-  // let coverDateMoment = moment(issue.cover_date, 'YYYY-MM');
-  let coverDateMoment = moment(issue.cover_date.toDate(), 'YYYY-MM');
+  let coverDateMoment = moment(issue.cover_date, 'YYYY-MM');
+  // let coverDateMoment = moment(issue.cover_date.toDate(), 'YYYY-MM');
   let coverDate = coverDateMoment.format('MMMM, YYYY');
   let htmlTemplate = `
     <h3>${issue.series_title} #${issue.number} (${coverDateMoment.year()})</h3>
