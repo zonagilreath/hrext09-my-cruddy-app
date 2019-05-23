@@ -10,20 +10,20 @@
 <body>
 	<header>
 		<h1>My Comics DB</h1>
-		<div id="searchbar"></div>
 	</header>
 	<main>
 		<nav id="sidebar">
-		  <!-- <div id="form_container">
-		  </div> -->
 		  <button type="button" id="add_new_issue">Add New Issue</button>
 			<img src="images/animal_man.png">
 		</nav>
-	  <section id="recently_added">
-	  	<h2>Recently added</h2>
-	  	<div id="recent_issues"></div>
-	  </section>
-	  <section id="search_results"></section>
+	  <section id="search_column">
+			<div id="searchbar"></div>
+	  	<article id="recently_added">
+  	  	<h2>Recently added</h2>
+  	  	<div id="recent_issues"></div>
+  	  </article>
+  	  <article id="search_results"></article>
+  	</section>
 	</main>
 	
 	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
@@ -35,6 +35,8 @@
   <script src='app/fbase_queries.js'></script>
   <script src='app/app.js'></script>
   <script src='app/search_widgets.js'></script>
-  <script src='app/initial_data.js'></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+
 </body>
 </html>

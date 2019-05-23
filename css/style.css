@@ -73,7 +73,7 @@ button {
 	font-weight: bold;
 }
 
-#issues_container {
+#search_column {
 	width: 80%;
 }
 
@@ -81,8 +81,6 @@ button {
 	display:block;
 	padding: 15px;
 	margin: 0 0 5px 5px;
-	/*background-color: #E1ECE1;*/
-	/*color: #638263;*/
 	color: #1F331f;
 
 }
@@ -97,11 +95,7 @@ button {
 }
 
 .issue_card_body img {
-	/*width: 10vw;*/
 	width: 145px;
-	/*min-height: 215px;*/
-	/*height: auto;*/
-	/*display: inline-block;*/
 	margin-right: 10px;
 	background-color: #F2F6F2;
 }

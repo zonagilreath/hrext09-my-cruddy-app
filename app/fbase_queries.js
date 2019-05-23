@@ -42,15 +42,15 @@ function getRecentIssues(){
 	document.getElementById('recent_issues').innerHTML = '';
 	issuesColl.get().then((snap)=>{
 		snap.forEach((doc)=>{
-			addIssueToPage(doc.data());
+			addIssueToContainer(doc.data(), '#recent_issues');
 		});
 	});
 }
 
-function addIssueToPage(issue){
-	let issueCardDiv = document.createElement('article');
+function addIssueToContainer(issue, containerId){
+	let issueCardDiv = document.createElement('div');
 		issueCardDiv.classList.add('issue_card');
 		issueCardDiv.innerHTML = createIssueCard(issue);
-		document.querySelector('#recent_issues').appendChild(issueCardDiv);
+		document.querySelector(containerId).appendChild(issueCardDiv);
 		makeCreatorsTravsersable(issueCardDiv);
 }
