@@ -2,12 +2,11 @@
   input boxes
   buttons
 */
-body {
+/*body {
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
 	background-color: #F2F6F2;
-	/*background-color: #A8DEF6;*/
 }
 
 header, main {
@@ -16,74 +15,76 @@ header, main {
 	max-width: 1000px;
 	min-width: 740px;
 }
+*/
+
+body {
+	background: black;
+}
 
 header {
 	padding-top: 0;
 	height: 30vh;
+	max-width: 1200px;
 	background-repeat: no-repeat;
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .01), rgba(0, 0, 0, .85)), url('../images/flex-banner.jpg');
-	background-size: cover;
+	background-image: 
+		linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), 
+		linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), 
+		url('../images/invisibles_smile_dark.jpg');
+	background-size: 65%;
+	background-color: black;
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 }
 
 header h1 {
+	position: relative;
+	top: 35px;
 	margin: 0;
-	font-size: 10vh;
+	font-weight: 400;
+	font-size: 500%;
 	text-transform: uppercase;
 	line-height: 0.8;
-	/*color: #E1ECE1;*/
-	color: #F2F6F2;
+	/*color: #F2F6F2;*/
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
+	color: lightgray;
 }
 
 main {
 	display: flex;
+	justify-content: center;
 	align-items: stretch;
 	height: 100%;
+	max-width: 800px;
+	margin-top: 15px;
+	margin-left: 10vw;
 }
 
 nav {
 	width: 20%;
 	height: 100%;
-	/*background-color: #162230;*/
 }
 
-nav img, nav button, nav input {
-	width: 100%;
-}
-
-nav img {
-	opacity: 0.5;
-}
-
-input{
-	box-sizing:border-box
-} 
-
-button {
-	background-color: #899E89;
-	color: #F2F6F2;
-	height: 30px;
-	border: 0;
-	text-transform: uppercase;
-	font-size: 1.3;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-bottom: 2px;
-	font-weight: bold;
-}
-
-#search_column {
+section {
 	width: 80%;
+	height: 100%;
+}
+
+article {
+	margin-left: 25px;
+}
+
+.list_header {
+	color: lightgray;
 }
 
 .issue_card {
 	display:block;
-	padding: 15px;
-	margin: 0 0 5px 5px;
-	color: #1F331f;
-
+	padding: 15px 35px;
+	margin: 0 0 10px 5px;
+	background-color: #333;
+	border-radius: 15px;
+	color: #AAA;
 }
 
 .issue_card_body {
@@ -118,5 +119,16 @@ button {
 }
 
 #create_issue {
-	display: none;
+	margin-left: 5vw;
+	color: lightgray;
+}
+
+.button-submit{
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-submit {
+    background: rgb(28, 184, 65); /* this is a green */
 }

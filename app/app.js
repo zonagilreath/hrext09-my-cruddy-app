@@ -28,7 +28,7 @@ function getNewIssueForm(){
 	button.textContent = "Back to search";
 
 	button.addEventListener('click', function(){
-		// search.start();
+		button.textContent = "Add new issue";
 		document.querySelector('#create_issue').style.display = 'none';
 		document.querySelector('#searchbar').style.display = 'block';
 		document.querySelector('#recently_added').style.display = 'block';

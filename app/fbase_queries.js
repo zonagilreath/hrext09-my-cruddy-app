@@ -39,8 +39,8 @@ function addIssueToDB(issue){
 }
 
 function getRecentIssues(){
-	document.getElementById('recent_issues').innerHTML = '';
 	issuesColl.get().then((snap)=>{
+		document.getElementById('recent_issues').innerHTML = '';
 		snap.forEach((doc)=>{
 			addIssueToContainer(doc.data(), '#recent_issues');
 		});

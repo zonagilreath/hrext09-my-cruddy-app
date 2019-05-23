@@ -4,7 +4,7 @@ const search = instantsearch({
   indexName: 'comics_db',
   searchClient,
   searchFunction: function(helper) {
-    var searchResults = document.getElementById('search_results');
+    var searchResults = document.getElementById('search');
     var rescentIssues = document.getElementById('recently_added');
     if (helper.state.query === '') {
       searchResults.style.display = 'none';
@@ -31,9 +31,11 @@ const renderHits = (renderOptions, isFirstRender) => {
   const { hits, widgetParams } = renderOptions;
 
   widgetParams.container.innerHTML = `
+    <div class="issue_card">
       ${hits
         .map(createIssueCard)
         .join('')}
+    </div>
   `;
 };
 

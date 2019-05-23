@@ -5,39 +5,81 @@
   <title>My Comics Databse</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<header>
-		<h1>My Comics DB</h1>
+		<h1>IDK COMICS</h1>
 	</header>
 	<main>
-		<nav id="sidebar">
-		  <button type="button" id="add_new_issue">Add New Issue</button>
-			<img src="images/animal_man.png">
+		<nav>
+		  <button type="button" id="add_new_issue" class="button-large pure-button">Add New Issue</button>
 		</nav>
 	  <section id="search_column">
 			<div id="searchbar"></div>
 	  	<article id="recently_added">
-  	  	<h2>Recently added</h2>
+  	  	<h2 class="list_header">Recently added</h2>
   	  	<div id="recent_issues"></div>
   	  </article>
-  	  <article id="search_results"></article>
-			<form id="create_issue">
-        <input type="text" name="series_title" placeholder="Series title">
-        <input type="number" step="1" name="number" placeholder="Issue #">
-        <input type="month" name="cover_date" label="Cover Date" value="1938-06">
-        <input type="text" name="writers" placeholder="Writers (separated by commas)">
-        <input type="text" name="pencillers" placeholder="Pencillers (separated by commas)">
-        <input type="text" name="inkers" placeholder="Inkers (separated by commas)">
-        <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
-        <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
-        <input type="text" name="editors" placeholder="Editors (separated by commas)">
-        <input type="text" name="cover_artists" placeholder="Cover Artists (separated by commas)">
-        <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
-        <button type="submit" name="submit">Submit</button>
+  	  <article id="search">
+  	  	<h2 class="list_header">Results</h2>
+  	  	<div id="search_results"></div>
+  	  </article>
+			<form id="create_issue" style="display: none;" class="pure-form pure-form-aligned">
+				<fieldset>
+					<h2 class="list_header">Add a new comic</h2>
+					<div class="pure-control-group">
+						<label for="series_title">Series title</label>
+		        <input type="text" name="series_title">
+					</div>
+					<div class="pure-control-group">
+		        <label for="number">Issue #</label>
+		        <input type="number" step="1" name="number">
+					</div>
+					<div class="pure-control-group">
+		        <label for="cover_date">Cover date</label>
+		        <input type="month" name="cover_date"value="1938-06">
+					</div>
+					<div class="pure-control-group">
+		        <label for="writers">Writer(s)</label>
+		        <input type="text" name="writers" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="pencillers">Penciller(s)</label>
+		        <input type="text" name="pencillers" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="inkers">Inker(s)</label>
+		        <input type="text" name="inkers" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="colorists">Colorist(s)</label>
+		        <input type="text" name="colorists" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="letterers">Letterer(s)</label>
+		        <input type="text" name="letterers" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="editors">Editor(s)</label>
+		        <input type="text" name="editors" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="cover_artists">Cover Artist(s)</label>
+		        <input type="text" name="cover_artists" placeholder="(separated by commas)">
+					</div>
+					<div class="pure-control-group">
+		        <label for="cover_url">Cover URL</label>
+		        <input type="url" name="cover_url" placeholder="http://example.com/cover.jpg">
+					</div>
+					<div class="pure-controls">
+		        <button type="submit" name="submit" class="pure-button button-submit">Submit</button>
+		      </div>
+				</fieldset>
       </form>
   	</section>
 	</main>
