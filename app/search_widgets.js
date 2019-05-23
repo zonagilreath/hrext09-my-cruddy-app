@@ -20,6 +20,9 @@ const search = instantsearch({
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#searchbar',
+    queryHook(query, search) {
+      search(query);
+    },
   })
 );
 
@@ -42,32 +45,5 @@ search.addWidget(
     container: document.querySelector('#search_results'),
   })
 );
-
-// search.addWidget(
-//   instantsearch.widgets.hits({
-//     container: '#search_results',
-//     templates: {
-//     	item(hit) {
-//     		return createIssueCard(hit);
-//     	}
-//       // allItems: function(hits){
-//       //   let searchHits = document.createElement('div');
-//       //   searchHits.setAttribute("id", "search_hits");
-//       //   hits.forEach((issue)=>{
-//       //     addIssueToContainer(issue, '#search_hits');
-//       //   });
-//       //   console.log(JSON.stringify(searchHits));
-//       //   return searchHits;
-//       // }
-//     //   allItems: `
-//     //           <div>
-//     //             {{#hits}}
-//     //               <p>{{ series_title }}</p>
-//     //             {{/hits}}
-//     //           </div>`
-//     // }
-//     }
-//   })
-// );
 
 search.start();

@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function creatorClickHandler(event){
-	event.preventDefault();
-	
+	let hits = search.helper.setQuery(event.target.textContent).search();
+	console.log(hits);
 }
 
 function makeCreatorsTravsersable(issueElement){
@@ -60,4 +60,52 @@ function cleanCreatorLists(formData){
 		});
 		formData[creator] = creatorList;
 	});
+}
+
+function createIssueCard(issue){
+  let coverDateMoment = moment(issue.cover_date, 'YYYY-MM');
+  // let coverDateMoment = moment(issue.cover_date.toDate(), 'YYYY-MM');
+  let coverDate = coverDateMoment.format('MMMM, YYYY');
+  let htmlTemplate = `
+    <h3>${issue.series_title} #${issue.number} (${coverDateMoment.year()})</h3>
+    <div class="issue_card_body">
+      <img src="${issue.cover_url}">
+      <div class="issue_data">
+        <p class="data_label"><strong>Writer(s):</strong>
+          ${wrapCreatorStrings(issue.writers).join(', ')}
+        </p>
+        <p class="data_label"><strong>Penciller(s):</strong>
+          ${wrapCreatorStrings(issue.pencillers).join(', ')}
+        </p>
+        <p class="data_label"><strong>Inker(s):</strong>
+          ${wrapCreatorStrings(issue.inkers).join(', ')}
+        </p>
+        <p class="data_label"><strong>Colorist(s):</strong>
+          ${wrapCreatorStrings(issue.colorists).join(', ')}
+        </p>
+        <p class="data_label"><strong>Letterer(s):</strong>
+          ${wrapCreatorStrings(issue.letterers).join(', ')}
+        </p>
+        <p class="data_label"><strong>Cover Artist(s):</strong>
+          ${wrapCreatorStrings(issue.cover_artists).join(', ')}
+        </p>
+        <p class="data_label"><strong>Editor(s):</strong>
+          ${wrapCreatorStrings(issue.editors).join(', ')}
+        </p>
+        <p class="data_label"><strong>Cover date:</strong>
+          <span class="cover_date">${coverDate}</span>
+        </p>
+      </div>
+    </div>
+  `;
+  return htmlTemplate;
+} 
+
+function wrapCreatorStrings(creatorList){
+  let wrappedCreators = [];
+  creatorList.forEach(function(creator){
+    let creatorSpan = `<span class="creator_name">${creator}</span>`;
+    wrappedCreators.push(creatorSpan);
+  });
+  return wrappedCreators;
 }
