@@ -10,16 +10,20 @@
 <body>
 	<header>
 		<h1>My Comics DB</h1>
+		<div id="searchbar"></div>
 	</header>
 	<main>
 		<nav id="sidebar">
-		  <div id="form_container">
-		  </div>
+		  <!-- <div id="form_container">
+		  </div> -->
 		  <button type="button" id="add_new_issue">Add New Issue</button>
 			<img src="images/animal_man.png">
 		</nav>
-	  <section id="issues_container">
+	  <section id="recently_added">
+	  	<h2>Recently added</h2>
+	  	<div id="recent_issues"></div>
 	  </section>
+	  <section id="search_results"></section>
 	</main>
 	
 	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>

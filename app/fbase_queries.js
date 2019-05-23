@@ -7,11 +7,13 @@ const firebaseConfig = {
   messagingSenderId: "395394810834",
   appId: "1:395394810834:web:baecdf830b454b42"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const fbase_time = firebase.firestore.Timestamp;
 const issuesColl = db.collection('issues');
+
 
 function createIssueObject(event){
 	let issueData = {};
@@ -37,10 +39,18 @@ function addIssueToDB(issue){
 }
 
 function getRecentIssues(){
-	document.getElementById('issues_container').innerHTML = '';
+	document.getElementById('recent_issues').innerHTML = '';
 	issuesColl.get().then((snap)=>{
 		snap.forEach((doc)=>{
 			addIssueToPage(doc.data());
 		});
 	});
+}
+
+function addIssueToPage(issue){
+	let issueCardDiv = document.createElement('article');
+		issueCardDiv.classList.add('issue_card');
+		issueCardDiv.innerHTML = createIssueCard(issue);
+		document.querySelector('#recent_issues').appendChild(issueCardDiv);
+		makeCreatorsTravsersable(issueCardDiv);
 }
