@@ -49,8 +49,8 @@ function getRecentIssues(){
 
 function addIssueToContainer(issue, containerId){
 	let issueCardDiv = document.createElement('div');
-		issueCardDiv.classList.add('issue_card');
-		issueCardDiv.innerHTML = createIssueCard(issue);
-		document.querySelector(containerId).appendChild(issueCardDiv);
-		makeCreatorsTravsersable(issueCardDiv);
+	issueCardDiv.classList.add('issue_card');
+	issueCardDiv.innerHTML = createIssueCard(issue);
+	document.querySelector(containerId).appendChild(issueCardDiv);
+	makeCreatorsTravsersable(issueCardDiv);
 }

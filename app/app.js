@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function creatorClickHandler(event){
 	event.preventDefault();
-	document.getElementById('issues_container').innerHTML = '';
-	resultList = genericQueryByCreator(event.target.textContent);
-	resultList.forEach(addIssueToPage);
+	
 }
 
 function makeCreatorsTravsersable(issueElement){
@@ -18,14 +16,22 @@ function makeCreatorsTravsersable(issueElement){
 }
 
 function getNewIssueForm(){
-	document.querySelector('#issues_container').innerHTML = createBookForm;
+	document.querySelector('#searchbar').style.display = 'none';
+	document.querySelector('#recently_added').style.display = 'none';
 
 	let form = document.querySelector('#create_issue');
+	form.style.display = 'block';
 	console.log('form added!');
 	form.addEventListener('submit', newIssueFormHandler);
 
-	document.querySelector('#cancel_add').addEventListener('click', function(){
-		getSearchForm('basic');
+	let button = 	document.querySelector('#add_new_issue');
+	button.textContent = "Back to search";
+
+	button.addEventListener('click', function(){
+		// search.start();
+		document.querySelector('#create_issue').style.display = 'none';
+		document.querySelector('#searchbar').style.display = 'block';
+		document.querySelector('#recently_added').style.display = 'block';
 		document.querySelector('#add_new_issue').addEventListener('click', getNewIssueForm);
 		getRecentIssues();
 	});
@@ -41,7 +47,6 @@ function newIssueFormHandler(event){
 	cleanCreatorLists(issue);
 	console.log('about to call add to db');
 	addIssueToDB(issue);
-	// updateRecentList(issue);
 	getSearchForm('basic');
 	getRecentIssues();
 }

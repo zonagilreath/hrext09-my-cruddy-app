@@ -18,23 +18,26 @@ const advancedSearchForm = `
 </form>
  `;
 
-const createBookForm = `
-<form id="create_issue">
-  <input type="text" name="series_title" placeholder="Series title">
-  <input type="number" step="1" name="number" placeholder="Issue #">
-  <input type="month" name="cover_date" label="Cover Date" value="1938-06">
-  <input type="text" name="writers" placeholder="Writers (separated by commas)">
-  <input type="text" name="pencillers" placeholder="Pencillers (separated by commas)">
-  <input type="text" name="inkers" placeholder="Inkers (separated by commas)">
-  <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
-  <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
-  <input type="text" name="editors" placeholder="Editors (separated by commas)">
-  <input type="text" name="cover_artists" placeholder="Cover Artists (separated by commas)">
-  <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
-  <button type="submit" name="submit">Submit</button>
-</form>
-<button type="button" id="cancel_add">Cancel</button>
-`;
+// const createBookForm = function(){
+//   var template = document.createElement('template');
+//     html = `
+//       <form id="create_issue">
+//         <input type="text" name="series_title" placeholder="Series title">
+//         <input type="number" step="1" name="number" placeholder="Issue #">
+//         <input type="month" name="cover_date" label="Cover Date" value="1938-06">
+//         <input type="text" name="writers" placeholder="Writers (separated by commas)">
+//         <input type="text" name="pencillers" placeholder="Pencillers (separated by commas)">
+//         <input type="text" name="inkers" placeholder="Inkers (separated by commas)">
+//         <input type="text" name="colorists" placeholder="Colorists (separated by commas)">
+//         <input type="text" name="letterers" placeholder="Letterers (separated by commas)">
+//         <input type="text" name="editors" placeholder="Editors (separated by commas)">
+//         <input type="text" name="cover_artists" placeholder="Cover Artists (separated by commas)">
+//         <input type="url" name="cover_url" label="Cover URL" placeholder="http://example.com/cover.jpg">
+//         <button type="submit" name="submit">Submit</button>
+//       </form>`
+//     template.innerHTML = html;
+//     return template.firstChild;
+// }
 
 function createIssueCard(issue){
   let coverDateMoment = moment(issue.cover_date, 'YYYY-MM');
