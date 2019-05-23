@@ -82,7 +82,7 @@ article {
 	display:block;
 	padding: 15px 35px;
 	margin: 0 0 10px 5px;
-	background-color: #333;
+	/*background-color: #333;*/
 	border-radius: 15px;
 	color: #AAA;
 }
@@ -99,23 +99,31 @@ article {
 .issue_card_body img {
 	width: 145px;
 	margin-right: 10px;
-	background-color: #F2F6F2;
 }
 
 .issue_data {
 	height: 230px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
+/*.issue_data p:nth-child(odd) {
+	background: #FFF;
+}
+.issue_data p:nth-child(even) {
+	background: #CCC;
+}*/
+
 .data_label {
-	margin: 4px;
+	margin: -1px;
+	padding: 4px;
 }
 
 .creator_name {
 	text-decoration: underline;
 	cursor: pointer;
+	background-color: inherit;
 }
 
 #create_issue {
