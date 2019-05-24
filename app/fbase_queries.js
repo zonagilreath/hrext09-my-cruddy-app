@@ -44,6 +44,7 @@ function getRecentIssues(){
 		snap.forEach((doc)=>{
 			addIssueToContainer(doc.data(), '#recent_issues');
 		});
+		makeCreatorsTravsersable();
 	});
 }
 
@@ -52,5 +53,4 @@ function addIssueToContainer(issue, containerId){
 	issueCardDiv.classList.add('issue_card');
 	issueCardDiv.innerHTML = createIssueCard(issue);
 	document.querySelector(containerId).appendChild(issueCardDiv);
-	makeCreatorsTravsersable(issueCardDiv);
 }

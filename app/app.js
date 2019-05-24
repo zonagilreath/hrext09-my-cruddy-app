@@ -5,19 +5,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function creatorClickHandler(event){
 	let hits = search.helper.setQuery(event.target.textContent).search();
-	console.log(hits);
 }
 
-function makeCreatorsTravsersable(issueElement){
-	let creatorSpans = issueElement.getElementsByClassName('creator_name');
+function makeCreatorsTravsersable(){
+	let creatorSpans = document.getElementsByClassName('creator_name');
 	for (let i = 0; i < creatorSpans.length; i++){
 		creatorSpans.item(i).addEventListener('click', creatorClickHandler);
 	}
 }
 
 function getNewIssueForm(){
-	document.querySelector('#searchbar').style.display = 'none';
-	document.querySelector('#recently_added').style.display = 'none';
 
 	let form = document.querySelector('#create_issue');
 	form.style.display = 'block';
@@ -36,6 +33,8 @@ function getNewIssueForm(){
 		getRecentIssues();
 	});
 
+	document.querySelector('#searchbar').style.display = 'none';
+	document.querySelector('#recently_added').style.display = 'none';
 	document.querySelector('#add_new_issue').removeEventListener('click', getNewIssueForm);
 }
 

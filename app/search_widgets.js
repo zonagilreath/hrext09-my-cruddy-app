@@ -29,14 +29,14 @@ search.addWidget(
 // Create the render function
 const renderHits = (renderOptions, isFirstRender) => {
   const { hits, widgetParams } = renderOptions;
-
   widgetParams.container.innerHTML = `
     <div class="issue_card">
       ${hits
         .map(createIssueCard)
-        .join('')}
+        .join('</div><div class="issue_card">')}
     </div>
   `;
+  makeCreatorsTravsersable();
 };
 
 // Create the custom widget
