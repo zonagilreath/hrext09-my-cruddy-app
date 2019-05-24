@@ -21,7 +21,7 @@ function createIssueObject(event){
 		issueData[key] = value;
 	})
 	issueData['number'] = parseInt(issueData['number']);
-	issueData['cover_date'] = fbase_time.fromDate(new Date(issueData['cover_date']));
+	// issueData['cover_date'] = issueData['cover_date'];
 	issueData['added'] = fbase_time.now();
 	console.log(issueData);
 	return issueData;
