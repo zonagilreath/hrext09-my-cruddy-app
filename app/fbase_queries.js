@@ -21,14 +21,11 @@ function createIssueObject(event){
 		issueData[key] = value;
 	})
 	issueData['number'] = parseInt(issueData['number']);
-	// issueData['cover_date'] = issueData['cover_date'];
 	issueData['added'] = fbase_time.now();
-	console.log(issueData);
 	return issueData;
 }
 
 function addIssueToDB(issue){
-	console.log(issue);
 	issuesColl.add(issue)
 	.then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);

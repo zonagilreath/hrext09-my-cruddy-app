@@ -49,10 +49,8 @@ function getNewIssueForm(){
 function newIssueFormHandler(event){
 	event.preventDefault();
 	let formData = {};
-	console.log('about to call create issue object');
 	issue = createIssueObject(event);
 	cleanCreatorLists(issue);
-	console.log('about to call add to db');
 	addIssueToDB(issue);
 	resetToSearchView()
 	getRecentIssues();

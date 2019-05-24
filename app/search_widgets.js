@@ -26,7 +26,6 @@ search.addWidget(
   })
 );
 
-// Create the render function
 const renderHits = (renderOptions, isFirstRender) => {
   const { hits, widgetParams } = renderOptions;
   widgetParams.container.innerHTML = `
@@ -39,7 +38,6 @@ const renderHits = (renderOptions, isFirstRender) => {
   makeCreatorsTravsersable();
 };
 
-// Create the custom widget
 const customHits = instantsearch.connectors.connectHits(renderHits);
 
 search.addWidget(
