@@ -18,6 +18,9 @@ function resetToSearchView(){
 	let button = 	document.querySelector('#add_new_issue');
 	button.textContent = "Add new issue";
 	button.addEventListener('click', getNewIssueForm);
+	for (form of document.getElementsByTagName('form')){
+		form.reset();
+	}
 	document.querySelector('#create_issue').style.display = 'none';
 	document.querySelector('#searchbar').style.display = 'block';
 	document.querySelector('#recently_added').style.display = 'block';
