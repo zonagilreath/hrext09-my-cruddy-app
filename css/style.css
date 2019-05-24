@@ -80,10 +80,10 @@ article {
 
 .issue_card {
 	display:block;
-	padding: 15px 35px;
+	padding: 5px 10px;
 	margin: 0 0 10px 5px;
-	/*background-color: #333;*/
-	/*border-radius: 15px;*/
+	background-color: #333;
+	border-radius: 5px;
 	color: #AAA;
 }
 
@@ -94,6 +94,7 @@ article {
 
 .issue_card h3 {
 	margin-top: 0;
+	margin-bottom: 10px;
 }
 
 .issue_card_body img {
@@ -106,6 +107,7 @@ article {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	margin-left: 14px;
 }
 
 /*.issue_data p:nth-child(odd) {

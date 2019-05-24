@@ -47,7 +47,9 @@ function newIssueFormHandler(event){
 	cleanCreatorLists(issue);
 	console.log('about to call add to db');
 	addIssueToDB(issue);
-	getSearchForm('basic');
+	document.querySelector('#create_issue').style.display = 'none';
+	document.querySelector('#searchbar').style.display = 'block';
+	document.querySelector('#recently_added').style.display = 'block';
 	getRecentIssues();
 }
 
