@@ -14,26 +14,31 @@ function makeCreatorsTravsersable(){
 	}
 }
 
+function resetToSearchView(){
+	let button = 	document.querySelector('#add_new_issue');
+	button.textContent = "Add new issue";
+	button.addEventListener('click', getNewIssueForm);
+	document.querySelector('#create_issue').style.display = 'none';
+	document.querySelector('#searchbar').style.display = 'block';
+	document.querySelector('#recently_added').style.display = 'block';
+}
+
 function getNewIssueForm(){
 
 	let form = document.querySelector('#create_issue');
 	form.style.display = 'block';
-	console.log('form added!');
 	form.addEventListener('submit', newIssueFormHandler);
 
 	let button = 	document.querySelector('#add_new_issue');
 	button.textContent = "Back to search";
 
 	button.addEventListener('click', function(){
-		button.textContent = "Add new issue";
-		document.querySelector('#create_issue').style.display = 'none';
-		document.querySelector('#searchbar').style.display = 'block';
-		document.querySelector('#recently_added').style.display = 'block';
-		document.querySelector('#add_new_issue').addEventListener('click', getNewIssueForm);
+		resetToSearchView();
 		getRecentIssues();
 	});
 
 	document.querySelector('#searchbar').style.display = 'none';
+	document.querySelector('#search_results').style.display = 'none';
 	document.querySelector('#recently_added').style.display = 'none';
 	document.querySelector('#add_new_issue').removeEventListener('click', getNewIssueForm);
 }
@@ -46,9 +51,7 @@ function newIssueFormHandler(event){
 	cleanCreatorLists(issue);
 	console.log('about to call add to db');
 	addIssueToDB(issue);
-	document.querySelector('#create_issue').style.display = 'none';
-	document.querySelector('#searchbar').style.display = 'block';
-	document.querySelector('#recently_added').style.display = 'block';
+	resetToSearchView()
 	getRecentIssues();
 }
 
